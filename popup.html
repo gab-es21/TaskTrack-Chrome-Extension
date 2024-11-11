@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskTrack</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="popup-container">
+    <div id="header">
+      <div class="arrow-container">
+        <button id="prev-day">&#9664;</button>
+        <span id="current-date">Today</span>
+        <button id="next-day">&#9654;</button>
+      </div>
+      <button id="today-btn" style="display: none;">Today</button>
+    </div>
+
+    <input type="text" id="search-bar" placeholder="Search tasks...">
+    <button id="add-task-btn">Add Task</button>
+    <hr class="separator">
+
+    <h3 id="todo-section-header" style="display: none;">To Do:</h3>
+    <ul id="task-list-todo"></ul>
+
+    <h3 id="done-section-header" style="display: none;">
+      Done:
+      <button id="toggle-done-btn">Hide</button>
+    </h3>
+    <ul id="task-list-done" style="display: block;"></ul>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

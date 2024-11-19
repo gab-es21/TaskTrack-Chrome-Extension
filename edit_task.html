@@ -9,6 +9,7 @@
 <body>
   <div class="modal-content">
     <h2>Edit Task</h2>
+    
     <label for="task-title">Title</label>
     <input type="text" id="task-title" required>
 
@@ -27,6 +28,12 @@
 
     <label for="task-comments">Comments</label>
     <textarea id="task-comments"></textarea>
+
+    <label for="task-link">Link (Optional)</label>
+    <input type="url" id="task-link" placeholder="https://example.com">
+
+    <label for="task-link-alias">Link Alias (Optional)</label>
+    <input type="text" id="task-link-alias" placeholder="Link text">
 
     <button id="save-task-btn">Save Task</button>
   </div>

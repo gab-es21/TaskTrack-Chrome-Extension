@@ -4,31 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TaskTrack</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" id="theme-link">
 </head>
 <body>
   <div id="popup-container">
-    <div id="header">
-      <div class="arrow-container">
-        <button id="prev-day">&#9664;</button>
-        <span id="current-date">Today</span>
-        <button id="next-day">&#9654;</button>
-      </div>
-      <button id="today-btn" style="display: none;">Today</button>
+    <!-- Move #tabs outside any container divs that limit width -->
+    <div id="tabs">
+      <button class="tab-button" data-tab="tasks">Tasks</button>
+      <button class="tab-button" data-tab="settings">Settings</button>
     </div>
+    
 
-    <input type="text" id="search-bar" placeholder="Search tasks...">
-    <button id="add-task-btn">Add Task</button>
-    <hr class="separator">
+    <div id="tab-content">
+      <div id="tasks-tab" class="tab">
+        <!-- Task-related HTML content -->
+        <div id="header">
+          <div class="arrow-container">
+            <button id="prev-day">&#9664;</button>
+            <span id="current-date">Today</span>
+            <button id="next-day">&#9654;</button>
+          </div>
+          <button id="today-btn" style="display: none;">Today</button>
+        </div>
+        <input type="text" id="search-bar" placeholder="Search tasks...">
+        <button id="add-task-btn">Add Task</button>
+        <hr class="separator">
+        <h3 id="todo-section-header" style="display: none;">To Do:</h3>
+        <ul id="task-list-todo"></ul>
+        <h3 id="done-section-header" style="display: none;">
+          Done:
+          <button id="toggle-done-btn">Hide</button>
+        </h3>
+        <ul id="task-list-done" style="display: block;"></ul>
+      </div>
+      
+<div id="settings-tab" class="tab" style="display: none;">
+  <label for="theme-select">Theme</label>
+  <select id="theme-select">
+    <option value="style-blue.css">Light Blue</option>
+    <option value="style-green.css">Light Green</option>
+    <option value="style-dark.css">Dark</option>
+  </select>
+  <hr class="separator">
+  
+  <label for="popup-size">Popup Size:</label>
+  <input type="range" id="popup-size" min="300" max="600" value="320" step="10" />
+  <div class="range-labels">
+    <span id="min-size">300px</span>
+    <span id="popup-size-value">320px</span>
+    <span id="max-size">600px</span>
+  </div>
+  <hr class="separator">
+  
+  <div id="data-control-buttons">
+    <button id="save-local-btn">Save Data <span class="icon">&#128190;</span></button>
+    <button id="load-local-btn">Load Data <span class="icon">&#128229;</span></button>
+  </div>
+  
+  <button id="delete-all-data-btn">Delete All Data <span class="icon">&#128465;</span></button>
+</div>
 
-    <h3 id="todo-section-header" style="display: none;">To Do:</h3>
-    <ul id="task-list-todo"></ul>
-
-    <h3 id="done-section-header" style="display: none;">
-      Done:
-      <button id="toggle-done-btn">Hide</button>
-    </h3>
-    <ul id="task-list-done" style="display: block;"></ul>
+      
+    </div>
   </div>
 
   <script src="popup.js"></script>

@@ -1,0 +1,557 @@
+/* ============ Global Reset and Base Styles ============ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+/* ============ Main Container Styles ============ */
+#popup-container {
+    padding: 10px;
+    width: 400px; /* Explicit width to avoid shrinking */
+    max-height: 500px;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============ Tabs ============ */
+#tabs {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #cccccc; /* Add a bottom border to underline */
+}
+
+.tab-button {
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    color: #007BFF;
+    flex: 1;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.2s, border-bottom 0.2s;
+    border-bottom: 2px solid transparent; /* Invisible border to maintain layout */
+}
+
+.tab-button.active {
+    border-bottom: 3px solid #007BFF; /* Highlight the active tab */
+    color: #0056b3;
+}
+
+.tab-button:hover {
+    color: #0056b3;
+}
+
+
+.tab {
+    display: none;
+}
+
+/* ============ Header and Date Navigation ============ */
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+#header button, #today-btn {
+    padding: 8px 10px;
+    border: none;
+    background-color: #007BFF;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+#today-btn {
+    margin-top: 5px;
+    padding: 6px 12px;
+}
+
+#today-btn:hover, #header button:hover {
+    background-color: #0056b3;
+}
+
+#current-date {
+    font-weight: bold;
+    color: #333333;
+}
+
+/* ============ Search Bar and Add Task Button ============ */
+#search-bar {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    color: #333333;
+}
+
+#todo-section-header {
+    margin: 5px 0;
+}
+
+#add-task-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+#add-task-btn:hover {
+    background-color: #0056b3;
+}
+
+.separator {
+    border: none;
+    border-top: 1px solid #cccccc;
+    margin: 10px 0;
+}
+
+/* ============ Task List and Task Styles ============ */
+#task-list {
+    list-style-type: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* ============ Task List and Task Styles ============ */
+.task {
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #f0f0f0;
+    transition: background-color 0.2s ease;
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column;
+}
+
+.task-header {
+    display: flex;
+    align-items: center; /* Ensure children are vertically centered */
+    justify-content: space-between;
+    width: 100%;
+}
+
+.task-header input[type="checkbox"] {
+    margin-right: 10px; /* Space between checkbox and next element */
+    transform: scale(1.2); /* Enlarge checkbox for better visibility */
+    cursor: pointer;
+}
+.task-actions {
+    display: flex;
+    gap: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.task-actions .delete-task {
+    color: #d9534f;
+}
+
+.task-actions .mark-done {
+    color: #5cb85c;
+}
+
+/* Priority Icon, Title, Due Date */
+.priority-icon {
+    width: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Priority Label */
+.priority-label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 10px;
+    display: inline-block;
+    white-space: nowrap;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+
+.task-title {
+    flex-grow: 1;
+    font-weight: bold;
+    text-align: left;
+}
+
+.due-date {
+    font-size: 12px;
+    color: #777777;
+}
+
+/* Hover and Status Styles */
+.task:hover:not(.overdue):not(.completed) {
+    background-color: #e6e6e6;
+}
+
+.task.overdue {
+    background-color: #f8d7da;
+}
+
+.task.overdue:hover {
+    background-color: #f5c6cb;
+    border-color: #f1a1b0;
+}
+
+.task.overdue .task-title {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.task.completed {
+    background-color: #d4edda;
+    text-decoration: line-through;
+    color: #155724;
+}
+
+.task.completed:hover {
+    background-color: #c3e6cb;
+    border-color: #b1dfbb;
+}
+
+/* Checkbox Styles */
+.task-header input[type="checkbox"]:checked {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.task-header input[type="checkbox"]:hover {
+    border-color: #007BFF;
+}
+
+/* Task Details and Comments */
+.task-details {
+    display: none;
+    padding-top: 10px;
+    border-top: 1px solid #cccccc;
+    margin-top: 10px;
+    color: #555555;
+}
+
+.task-comments {
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #666666;
+}
+
+/* Edit Task Button */
+.edit-task-btn {
+    background-color: #5cb85c;
+    color: #ffffff;
+    padding: 5px 10px;
+    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.edit-task-btn:hover {
+    background-color: #4cae4c;
+}
+
+/* Done Section Toggle Button */
+#toggle-done-btn {
+    font-size: 12px;
+    color: #17a2b8;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Ensure consistency in form styling */
+.modal-content label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="date"],
+.modal-content input[type="url"],
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #333333;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #007BFF;
+    background-color: #e6e6e6;
+}
+
+
+/* Form and Input Styles */
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #333333;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #007BFF;
+    background-color: #e6e6e6;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+/* Save Task Button */
+#save-task-btn {
+    padding: 12px;
+    background-color: #5cb85c;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
+
+#save-task-btn:hover {
+    background-color: #4cae4c;
+}
+
+/* Link Styling */
+/* Link Styling with Alias */
+.task-link {
+    display: inline-block;
+    color: #007BFF;
+    text-decoration: underline;
+    font-weight: normal;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.task-link:hover {
+    color: #0056b3;
+}
+
+
+/* Data Control Buttons */
+#data-control-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#data-control-buttons button {
+    flex: 1;
+}
+
+.icon {
+    margin-left: 5px;
+}
+
+#save-local-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#save-local-btn:hover {
+    background-color: #45a049;
+}
+
+#load-local-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+#load-local-btn:hover {
+    background-color: #1976D2;
+}
+
+/* Delete All Data Button */
+#delete-all-data-btn {
+    background-color: #f44336;
+    color: white;
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+}
+
+#delete-all-data-btn:hover {
+    background-color: #e53935;
+}
+
+/* Modal Styles for Confirmation */
+.modal-confirm {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    margin: auto;
+    position: relative;
+    text-align: center;
+}
+
+.modal-confirm h4 { 
+    color: #555; 
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.modal-confirm p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.modal-confirm .btn-danger {
+    color: #fff;
+    background-color: #f44336;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-confirm .btn-cancel {
+    color: #555;
+    background-color: #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-confirm .btn-danger:hover {
+    background-color: #e53935;
+}
+
+.modal-confirm .btn-cancel:hover {
+    background-color: #ccc;
+}
+
+/* General Button Styling in Light Blue Theme */
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 10px;
+    color: #555555;
+}
+
+#popup-size {
+    width: 100%;
+    margin: 0; /* Ensures slider spans full width */
+}
+
+#popup-size-value {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* General styles for thinner scrollbars */
+::-webkit-scrollbar {
+    width: 8px; /* Adjust the width for vertical scrollbar */
+    height: 8px; /* Adjust the height for horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1); /* Thumb color */
+    border-radius: 10px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* Darker on hover */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f5f5f5; /* Track color */
+}
+
+
+
+
+
+
